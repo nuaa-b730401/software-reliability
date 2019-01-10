@@ -49,6 +49,23 @@ public abstract class Model implements DataReader{
         testDataset = new LinkedList<>();
         trainDataset.add(0d);
     }
+
+    public Model(List<Double> dataset) {
+        this();
+        for (Double value : dataset) {
+            add(value);
+        }
+        // 构造训练集和测试集
+        trainDataNum = (int) (n * 0.7);
+        for (int i = 0; i < n; i++) {
+            if (i < trainDataNum) {
+                trainDataset.add(failCountList.get(i));
+            } else {
+                testDataset.add(failCountList.get(i));
+            }
+        }
+
+    }
     /**
      * 计算概率分布值
      * @param x

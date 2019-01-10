@@ -1,5 +1,7 @@
 package org.nuaa.b730401.softwarereliability.core.bean;
 
+import java.util.List;
+
 /**
  * @Author: ToMax
  * @Description:
@@ -15,6 +17,14 @@ public class GoelOkumotoBean extends Model {
     private double aPoint;
 
     private double bPoint;
+
+    public GoelOkumotoBean() {
+        super();
+    }
+
+    public GoelOkumotoBean(List<Double> dataset) {
+        super(dataset);
+    }
 
     /**
      * 计算d

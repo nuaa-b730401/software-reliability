@@ -3,6 +3,7 @@ package org.nuaa.b730401.softwarereliability.core;
 import org.nuaa.b730401.softwarereliability.core.bean.JmModelDataBean;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Author: ToMax
@@ -19,10 +20,24 @@ public class JelinskiMorandaModel {
      */
     private static final int EY = 1;
 
+    /**
+     * 文件入口
+     * @return
+     * @throws IOException
+     */
     public static JmModelDataBean execute() throws IOException {
         JmModelDataBean jm = new JmModelDataBean();
         // 读取文件
         jm.readData(JelinskiMorandaModel.class.getResource("/").getPath() + "failure_count.txt");
+        // 初始化
+        calculateValueP(jm);
+        // 从步骤一开始执行
+        calculateStepFirst(jm);
+        return jm;
+    }
+
+    public static JmModelDataBean execute(List<Double> data) throws IOException {
+        JmModelDataBean jm = new JmModelDataBean(data);
         // 初始化
         calculateValueP(jm);
         // 从步骤一开始执行

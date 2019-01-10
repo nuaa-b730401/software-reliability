@@ -87,8 +87,9 @@ class svm_predict {
 			{
 				v = svm.svm_predict_probability(model,x,prob_estimates);
 				output.writeBytes(v+" ");
-				for(int j=0;j<nr_class;j++)
-					output.writeBytes(prob_estimates[j]+" ");
+				for(int j=0;j<nr_class;j++) {
+					output.writeBytes(prob_estimates[j] + " ");
+				}
 				output.writeBytes("\n");
 			}
 			else
@@ -116,9 +117,10 @@ class svm_predict {
 				 ((total*sumvv-sumv*sumv)*(total*sumyy-sumy*sumy))+
 				 " (regression)\n");
 		}
-		else
-			svm_predict.info("Accuracy = "+(double)correct/total*100+
-				 "% ("+correct+"/"+total+") (classification)\n");
+		else {
+			svm_predict.info("Accuracy = " + (double) correct / total * 100 +
+					"% (" + correct + "/" + total + ") (classification)\n");
+		}
 	}
 
 	private static void exit_with_help()

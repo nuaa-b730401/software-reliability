@@ -3,6 +3,7 @@ package org.nuaa.b730401.softwarereliability.core;
 import org.nuaa.b730401.softwarereliability.core.bean.GoelOkumotoBean;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Author: ToMax
@@ -24,6 +25,20 @@ public class GoelOkumotoModel {
         GoelOkumotoBean go = new GoelOkumotoBean();
         // 读取数据
         go.readData(GoelOkumotoBean.class.getResource("/").getPath() + "failure_count.txt");
+        // 计算d
+        go.initdValue();
+        // 执行计算步骤
+        calculateStepFirst(go);
+
+        for (int i = 0; i <= go.getTrainDataNum(); i++) {
+            go.getuValueList().add(calculateDistributionFunction(go, i));
+        }
+        // 返回
+        return go;
+    }
+
+    public static GoelOkumotoBean execute(List<Double> dataset) {
+        GoelOkumotoBean go = new GoelOkumotoBean(dataset);
         // 计算d
         go.initdValue();
         // 执行计算步骤

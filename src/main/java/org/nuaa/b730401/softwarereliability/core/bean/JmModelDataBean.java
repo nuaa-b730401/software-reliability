@@ -1,5 +1,7 @@
 package org.nuaa.b730401.softwarereliability.core.bean;
 
+import java.util.List;
+
 /**
  * @Author: ToMax
  * @Description:
@@ -25,6 +27,14 @@ public class JmModelDataBean extends Model {
     private int right;
     private int left;
     private int root;
+
+    public JmModelDataBean() {
+
+    }
+
+    public JmModelDataBean(List<Double> dataset) {
+        super(dataset);
+    }
 
     @Override
     public double calculateDistribution(double x) {
