@@ -22,9 +22,11 @@ public interface IProjectService {
     /**
      * 根据用户id获取项目列表
      * @param id
+     * @param page
+     * @param limit
      * @return
      */
-    Response getProjectByUserId(Long id);
+    Response getProjectByUserId(Long id, int page, int limit);
 
     /**
      * 更新工程信息
@@ -47,5 +49,4 @@ public interface IProjectService {
      * @return
      */
     Response deleteProject(Long id);
-
 }

@@ -32,11 +32,11 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
     @Override
-    public Response getProjectByUserId(Long id) {
+    public Response getProjectByUserId(Long id, int page, int limit) {
         return new Response<ProjectEntity>(
                 Response.SUCCESS_CODE,
                 "获取数据成功",
-                projectRepository.findProjectEntitiesByUserId(id)
+                projectRepository.findProjectEntitiesByUserId(id, limit, (page - 1) * limit)
         );
     }
 

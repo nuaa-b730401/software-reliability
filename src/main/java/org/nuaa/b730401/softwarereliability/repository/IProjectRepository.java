@@ -16,9 +16,12 @@ public interface IProjectRepository extends JpaRepository<ProjectEntity, Long> {
     /**
      * 通过用户id获取项目数据
      * @param userId
+     * @param limit
+     * @param offset
      * @return
      */
-    List<ProjectEntity> findProjectEntitiesByUserId(Long userId);
+    @Query(value = "select * from project where user_id = ?1 limit ?2 offset ?3", nativeQuery = true)
+    List<ProjectEntity> findProjectEntitiesByUserId(Long userId, int limit, int offset);
 
     /**
      * 更新项目信息

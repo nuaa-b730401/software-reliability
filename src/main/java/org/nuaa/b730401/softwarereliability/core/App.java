@@ -24,6 +24,8 @@ public class App {
             data.add(scanner.nextDouble());
         }
         JmModelDataBean model = JelinskiMorandaModel.execute(data);
+        System.out.println(model.getnPointEvaluate());
+        System.out.println(model.getFaiPointEvaluate());
 //        GoelOkumotoBean model = GoelOkumotoModel.execute();
         EvaluateModel.uGraphEvaluate(model);
         EvaluateModel.yGraphEvaluate(model);
@@ -35,7 +37,10 @@ public class App {
         evaluateGraph.pack();
         evaluateGraph.setVisible(true);
 
-        GoelOkumotoBean goModel = GoelOkumotoModel.execute();
+        GoelOkumotoBean goModel = GoelOkumotoModel.execute(data);
+        System.out.println(goModel.getaPoint());
+        System.out.println(goModel.getbPoint());
 //        System.out.println("plr : " + EvaluateModel.plrEvaluate(model, goModel));
     }
 }
+

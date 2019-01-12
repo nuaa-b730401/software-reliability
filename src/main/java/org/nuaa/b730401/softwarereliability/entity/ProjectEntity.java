@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  * @Date: Created in 2019/1/10 16:33
  */
 @Entity
-@Table(name = "reliability", schema = "project")
+@Table(name = "project", schema = "reliability")
 public class ProjectEntity {
     private Long id;
     private Long userId;

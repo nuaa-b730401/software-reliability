@@ -29,7 +29,7 @@ public class UserServiceImpl implements IUserService{
     @Override
     public Response register(UserEntity user) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         if (userRepository.findUserEntityByName(user.getName()).isPresent()) {
-            return new Response(Response.NORMAL_EROOR_CODE, "用户名或密码错误");
+            return new Response(Response.NORMAL_EROOR_CODE, "用户名已存在");
         }
 
         user.setPassword(PasswordEncryptUtil.getEncryptedPwd(user.getPassword()));
@@ -49,9 +49,9 @@ public class UserServiceImpl implements IUserService{
         }
 
         if (PasswordEncryptUtil.validPassword(user.getPassword(), result.getPassword())) {
-            result.setPassword("");
             userRepository.updateLoginCount(user.getId());
             session.setAttribute(String.valueOf(user.getId()), user);
+            user.setPassword("");
             return new Response<UserEntity>(Response.SUCCESS_CODE, "登录成功", result);
         }
         return new Response(Response.NORMAL_EROOR_CODE, "用户名或密码错误");

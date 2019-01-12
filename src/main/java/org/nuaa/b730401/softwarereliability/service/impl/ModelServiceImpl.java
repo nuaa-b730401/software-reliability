@@ -1,5 +1,6 @@
 package org.nuaa.b730401.softwarereliability.service.impl;
 
+import org.nuaa.b730401.softwarereliability.core.EvaluateModel;
 import org.nuaa.b730401.softwarereliability.core.GoelOkumotoModel;
 import org.nuaa.b730401.softwarereliability.core.JelinskiMorandaModel;
 import org.nuaa.b730401.softwarereliability.core.bean.GoelOkumotoBean;
@@ -10,6 +11,7 @@ import org.nuaa.b730401.softwarereliability.core.bp.constant.FunctionConstant;
 import org.nuaa.b730401.softwarereliability.core.bp.matrix.Matrix;
 import org.nuaa.b730401.softwarereliability.core.exception.MatrixSizeException;
 import org.nuaa.b730401.softwarereliability.core.exception.NetworkException;
+import org.nuaa.b730401.softwarereliability.core.svm.SVRModel;
 import org.nuaa.b730401.softwarereliability.entity.DatasetBean;
 import org.nuaa.b730401.softwarereliability.entity.Response;
 import org.nuaa.b730401.softwarereliability.entity.form.BpPropertiesForm;
@@ -122,11 +124,18 @@ public class ModelServiceImpl implements IModelService {
 
     @Override
     public Response svrEvaluate(Long projectId, SVRPropertiesForm form) {
-        return null;
+        return new Response<SVRModel>(
+                Response.SUCCESS_CODE,
+                "svr success",
+                new SVRModel());
     }
 
     @Override
     public Response modelEvaluate(Long projectId) {
-        return null;
+        return new Response<EvaluateModel>(
+                Response.SUCCESS_CODE,
+                "evaluate success",
+                new EvaluateModel()
+        );
     }
 }

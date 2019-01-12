@@ -34,7 +34,7 @@ public class UserController {
         return userService.register(user);
     }
 
-    @PutMapping("/user")
+    @PutMapping
     public Response updateUserInfo(UserEntity user) {
         return userService.updateUserInfo(user);
     }
